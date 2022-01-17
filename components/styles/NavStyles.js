@@ -4,7 +4,7 @@ const NavStyles = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 2rem;
   list-style-type: none;
   a,
   button {

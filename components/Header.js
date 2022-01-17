@@ -4,7 +4,7 @@ import Nav from './Nav';
 import styled from 'styled-components';
 
 const Logo = styled.div`
-  font-size: 3rem;
+  font-size: 4rem;
   margin-left: 2rem;
   position: relative;
   z-index: 2;
@@ -37,7 +37,7 @@ export default function Header() {
     <HeaderStyles>
       <div className="main">
         <Logo>
-          <Link href="/">Teach</Link>
+          <Link href="/">dalta</Link>
         </Logo>
         <Nav />
       </div>

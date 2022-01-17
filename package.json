@@ -12,8 +12,8 @@
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-ssr": "^4.0.0",
     "graphql": "^16.2.0",
-    "next": "12.0.8",
-    "next-with-apollo": "github:Gokhan-Unal/next-with-apollo",
+    "next": "^11.1.3",
+    "next-with-apollo": "^5.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

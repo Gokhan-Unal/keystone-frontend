@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import styled from 'styled-components';
+import Course from './Course';
 
 const ALL_COURSES_QUERY = gql`
   query ALL_COURSES_QUERY {
@@ -33,9 +34,7 @@ export default function Courses() {
   return (
     <CourseList>
       {data.allCourses.map((course) => (
-        <div key={course.id}>
-          <p>{course.name}</p>
-        </div>
+        <Course key={course.id} course={course} />
       ))}
     </CourseList>
   );

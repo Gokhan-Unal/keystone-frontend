@@ -1,9 +1,10 @@
 import React from 'react'
+import Courses from '../components/Courses'
 
 export default function CoursePage() {
   return (
     <div>
-      <h1>Course Page</h1>
+      <Courses />
     </div>
   )
 }

@@ -10,6 +10,7 @@ const ALL_COURSES_QUERY = gql`
       name
       description
       status
+      price
       photo {
         image {
           publicUrlTransformed

@@ -1,0 +1,40 @@
+# for getting all courses
+query getAllCourses {
+  allCourses: courses {
+    id
+    name
+    description
+    status
+    photo {
+      image {
+        publicUrlTransformed
+      }
+      altText
+    }
+  }
+}
+
+# for getting single course
+query getSingleCourse {
+  singleCourse: course(where: { id: "ckyj19rls0509kcg6webvjujv" }) {
+    id
+    name
+    description
+    status
+    photo {
+      image {
+        publicUrlTransformed
+      }
+      altText
+    }
+  }
+}
+
+#--- single response
+# singleCourse:
+# description: "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"
+# id: "ckyj19rls0509kcg6webvjujv"
+# name: "React - The Complete Guide"
+# photo: {__typename: 'CourseImage', image: {…}, altText: 'React Course'}
+# status: "PUBLISHED"
+# __typename: "Course"

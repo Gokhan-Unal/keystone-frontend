@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --blue: skyblue;
     --black: '#393939';
     --gray: '#3A3A3A';
-    --max-width: 1100px;
+    --max-width: 1450px;
     --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);
     box-sizing: border-box;
   }
@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 2;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--black);
   }
   a:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 
 `;

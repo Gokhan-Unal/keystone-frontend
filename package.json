@@ -2,7 +2,7 @@
   "name": "frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,6 +11,7 @@
     "@apollo/client": "^3.5.7",
     "@apollo/link-error": "^2.0.0-beta.3",
     "@apollo/react-ssr": "^4.0.0",
+    "apollo-upload-client": "^17.0.0",
     "babel-core": "^6.26.3",
     "babel-plugin-styled-components": "^2.0.2",
     "graphql": "^16.2.0",
@@ -38,7 +39,8 @@
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": true,
+              "preprocess": false
             }
           ]
         ]
@@ -52,7 +54,8 @@
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": true,
+              "preprocess": false
             }
           ]
         ]
@@ -73,7 +76,8 @@
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": true,
+              "preprocess": false
             }
           ]
         ]

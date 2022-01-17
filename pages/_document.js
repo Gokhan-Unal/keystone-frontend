@@ -3,12 +3,31 @@ import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
   // wait until this resolve before sending data to server into client
-  static getInitialProps({ renderPage }) {
+  // * https://github.com/vercel/next.js/blob/main/examples/with-styled-components/pages/_document.js
+  
+  static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App) => (props) => sheet.collectStyles(<App {...props} />));
+    const originalRenderPage = ctx.renderPage;
 
-    const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
   render() {
     return (

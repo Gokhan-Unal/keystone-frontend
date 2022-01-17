@@ -23,7 +23,7 @@ const NavStyles = styled.ul`
       display: block;
       width: 0;
       height: 2px;
-      background: #000;
+      background: var(--blue);
       transition: width 0.3s;
     }
 

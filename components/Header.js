@@ -29,6 +29,7 @@ const HeaderStyles = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    border-bottom: 5px solid var(--black);
   }
   .sub-main {
     display: grid;

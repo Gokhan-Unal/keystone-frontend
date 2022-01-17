@@ -4,7 +4,7 @@ import withData from '../lib/withData';
 
 function MyApp({ Component, pageProps, apollo }) {
   // console.log('apollo:', apollo);
-  console.log(pageProps);
+  // console.log(pageProps);
   return (
     <ApolloProvider client={apollo}>
       <Page>

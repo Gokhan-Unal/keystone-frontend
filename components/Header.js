@@ -9,11 +9,16 @@ const Logo = styled.div`
   position: relative;
   z-index: 2;
   background: skyblue;
+  transform: skew(-10deg);
+  transition: filter 0.5s ease-in-out;
   a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
+  }
+  &:hover {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
   }
 `;
 

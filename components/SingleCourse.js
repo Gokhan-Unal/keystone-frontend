@@ -44,6 +44,7 @@ export default function SingleCourse({ id }) {
         alt={singleCourse?.name}
       />
       <h1>{singleCourse?.name}</h1>
+      <p>{singleCourse?.description}</p>
     </div>
   );
 }

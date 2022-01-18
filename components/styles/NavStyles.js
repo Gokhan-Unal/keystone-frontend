@@ -31,12 +31,11 @@ const NavStyles = styled.ul`
       width: 100%;
     }
     @media (max-width: 700px) {
-      font-size: 10px;
+      font-size: 1rem;
       padding: 0 10px;
     }
   }
   @media (max-width: 1300px) {
-    border-top: 1px solid var(--lightGray);
     display: flex;
     width: 100%;
     justify-content: center;

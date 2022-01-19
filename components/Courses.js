@@ -2,10 +2,11 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import styled from 'styled-components';
 import Course from './Course';
+import { perPage } from '../config';
 
 const ALL_COURSES_QUERY = gql`
-  query ALL_COURSES_QUERY {
-    allCourses: courses {
+  query getAllCourses($skip: Int = 0, $take: Int) {
+    allCourses: courses(take: $take, skip: $skip) {
       id
       name
       description
@@ -21,8 +22,13 @@ const ALL_COURSES_QUERY = gql`
   }
 `;
 
-export default function Courses() {
-  const { loading, error, data } = useQuery(ALL_COURSES_QUERY);
+export default function Courses({ page }) {
+  const { loading, error, data } = useQuery(ALL_COURSES_QUERY, {
+    variables: {
+      skip: page * perPage - perPage, // page => 1 =>  1 * 4 - 4 = 0
+      take: perPage,
+    },
+  });
 
   if (loading) {
     return <p>Loading...</p>;

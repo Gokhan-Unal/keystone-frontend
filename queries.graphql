@@ -30,6 +30,27 @@ query getSingleCourse {
   }
 }
 
+# Get all courses count
+query count {
+  coursesCount
+}
+
+# pass parameters in query variables
+query getAllCourses($skip: Int = 0, $take: Int) {
+  allCourses: courses(take: $take, skip: $skip) {
+    id
+    name
+    description
+    status
+    photo {
+      image {
+        publicUrlTransformed
+      }
+      altText
+    }
+  }
+}
+
 #--- single response
 # singleCourse:
 # description: "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"

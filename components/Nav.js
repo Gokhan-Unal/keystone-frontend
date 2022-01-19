@@ -1,16 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
+import useUser from '../hooks/useUser';
 
 export default function Nav() {
+  const user = useUser();
+  console.log(user);
   return (
     <NavStyles>
       <li>
-        <Link href="/course">Courses</Link>
+        <Link href="/courses">Courses</Link>
       </li>
-      <li>
-        <Link href="/account">Account</Link>
-      </li>
+      {user && (
+        <>
+          <li>
+            <Link href="/account">Account</Link>
+          </li>
+        </>
+      )}
+      {!user && (
+        <>
+          <li>
+            <Link href="/signin">Sign In</Link>
+          </li>
+          <li>
+            <Link href="/account">Account</Link>
+          </li>
+        </>
+      )}
     </NavStyles>
   );
 }

@@ -3,8 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 
 const SINGLE_COURSE_QUERY = gql`
-  query getSingleCourse {
-    singleCourse: course(where: { id: "ckyj19rls0509kcg6webvjujv" }) {
+  query getSingleCourse($id: ID!) {
+    singleCourse: course(where: { id: $id }) {
       id
       name
       description
@@ -37,13 +37,14 @@ export default function SingleCourse({ id }) {
   return (
     <div>
       <Image
-        width="800"
-        height="600"
+        width="600"
+        height="400"
         quality={100}
         src={singleCourse?.photo?.image?.publicUrlTransformed}
-        alt={singleCourse.name}
+        alt={singleCourse?.name}
       />
       <h1>{singleCourse?.name}</h1>
+      <p>{singleCourse?.description}</p>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const Logo = styled.div`
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: skyblue;
+  background: var(--blue);
   transform: skew(-10deg);
   transition: filter 0.5s ease-in-out;
   a {
@@ -20,6 +20,10 @@ const Logo = styled.div`
   &:hover {
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
   }
+
+  @media (max-width: 700px) {
+    font-size: 3rem;
+  }
 `;
 
 const HeaderStyles = styled.header`
@@ -30,6 +34,12 @@ const HeaderStyles = styled.header`
     align-items: center;
     padding: 0 2rem;
     border-bottom: 5px solid var(--black);
+
+    @media (max-width: 1300px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
   .sub-main {
     display: grid;

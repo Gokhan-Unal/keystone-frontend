@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 
-const CURRENT_USER_QUERY = gql`
+export const CURRENT_USER_QUERY = gql`
   query user {
     authenticatedItem {
       ... on User {

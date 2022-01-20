@@ -89,6 +89,29 @@ mutation Signin {
   }
 }
 
+mutation Signin {
+  authenticateUserWithPassword(email: "berkin@exadasdsample.com", password: "berkin123") {
+    ... on UserAuthenticationWithPasswordSuccess {
+      sessionToken
+      item {
+        name
+        email
+      }
+    }
+    ... on UserAuthenticationWithPasswordFailure {
+      message
+    }
+  }
+}
+
+mutation SignUp($email: String!, $name: String!, $password: String!) {
+  createUser(data: { name: $name, email: $email, password: $password }) {
+    id
+    name
+    email
+  }
+}
+
 #--- single response
 # singleCourse:
 # description: "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"

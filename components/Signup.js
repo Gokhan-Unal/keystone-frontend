@@ -2,6 +2,7 @@ import { gql, useMutation } from '@apollo/client';
 import React from 'react';
 import useForm from '../hooks/useForm';
 import styled from 'styled-components';
+import { useRouter } from 'next/dist/client/router';
 
 const SIGNUP_MUTATION = gql`
   mutation Signup($email: String!, $name: String!, $password: String!) {
@@ -14,6 +15,7 @@ const SIGNUP_MUTATION = gql`
 `;
 
 export default function SignUp() {
+  const router = useRouter();
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
     name: '',
@@ -23,12 +25,10 @@ export default function SignUp() {
     variables: inputs,
   });
   async function handleSubmit(e) {
-    e.preventDefault(); // stop the form from submitting
-    console.log(inputs);
-    const res = await signup().catch(console.error);
-    console.log(res);
-    console.log({ data, loading, error });
+    e.preventDefault();
+    await signup().catch(console.error);
     resetForm();
+    router.push('/signin');
   }
   return (
     <FormStyles method="POST" onSubmit={handleSubmit}>

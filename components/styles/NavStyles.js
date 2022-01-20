@@ -31,7 +31,7 @@ const NavStyles = styled.ul`
       width: 100%;
     }
     @media (max-width: 700px) {
-      font-size: 1rem;
+      font-size: 0.8rem;
       padding: 0 10px;
     }
   }
@@ -39,7 +39,7 @@ const NavStyles = styled.ul`
     display: flex;
     width: 100%;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
 

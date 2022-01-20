@@ -16,6 +16,9 @@ export default function Nav() {
           <li>
             <Link href="/account">Account</Link>
           </li>
+          <li>
+            <a>Welcome back {user.name}</a>
+          </li>
         </>
       )}
       {!user && (

@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import useForm from '../hooks/useForm';
 import { CURRENT_USER_QUERY } from '../hooks/useUser';
+import { FormStyles } from './Signup';
 
 const SIGNIN_MUTATION = gql`
   mutation Signin($email: String!, $password: String!) {
@@ -47,12 +48,13 @@ export default function Signin() {
       : undefined;
 
   return (
-    <form method="POST" onSubmit={handleSubmit}>
+    <FormStyles method="POST" onSubmit={handleSubmit}>
       <h2>Sign in to your account</h2>
       {error ? error : undefined}
       <label htmlFor="email">
         Email
         <input
+          placeholder="Your Email Address"
           type="email"
           name="email"
           id="email"
@@ -71,7 +73,9 @@ export default function Signin() {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">Sign In</button>
-    </form>
+      <button disabled={loading} type="submit">
+        Sign In
+      </button>
+    </FormStyles>
   );
 }

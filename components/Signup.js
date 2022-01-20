@@ -1,6 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 import React from 'react';
 import useForm from '../hooks/useForm';
+import styled from 'styled-components';
 
 const SIGNUP_MUTATION = gql`
   mutation Signup($email: String!, $name: String!, $password: String!) {
@@ -30,13 +31,13 @@ export default function SignUp() {
     resetForm();
   }
   return (
-    <form method="POST" onSubmit={handleSubmit}>
+    <FormStyles method="POST" onSubmit={handleSubmit}>
       <h2>Sign Up For an Account</h2>
       {data?.createUser && (
         <p>Signed up with {data.createUser.email} - Please Go Head and Sign in!</p>
       )}
-      <label htmlFor="email">
-        Your Name
+      <label htmlFor="name">
+        Name:
         <input
           type="text"
           name="name"
@@ -47,7 +48,7 @@ export default function SignUp() {
         />
       </label>
       <label htmlFor="email">
-        Email
+        Email:
         <input
           type="email"
           name="email"
@@ -58,7 +59,7 @@ export default function SignUp() {
         />
       </label>
       <label htmlFor="password">
-        Password
+        Password:
         <input
           type="password"
           name="password"
@@ -68,7 +69,39 @@ export default function SignUp() {
           onChange={handleChange}
         />
       </label>
-      <button type="submit">Sign Up!</button>
-    </form>
+      <button disabled={loading} type="submit">
+        Sign Up!
+      </button>
+    </FormStyles>
   );
 }
+
+export const FormStyles = styled.form`
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  box-shadow: var(--bs);
+  background: rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  input {
+    padding: 0.5rem;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  button {
+    background: var(--blue);
+    color: var(--offWhite);
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+  }
+`;

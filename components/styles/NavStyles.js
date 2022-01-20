@@ -4,7 +4,7 @@ const NavStyles = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.2rem;
   list-style-type: none;
   a,
   button {
@@ -13,7 +13,7 @@ const NavStyles = styled.ul`
     align-items: center;
     position: relative;
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 1em;
     background: none;
     border: 0;

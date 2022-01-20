@@ -18,11 +18,11 @@ export const FormStyles = styled.form`
     border-radius: 3px;
     width: 100%;
   }
-
   button {
     background: var(--blue);
     color: var(--offWhite);
     border: none;
+    font-size: 2.5rem;
     padding: 1rem 1.5rem;
     cursor: pointer;
   }

@@ -53,7 +53,7 @@ export default function Header() {
     <HeaderStyles>
       <div className="main">
         <Logo>
-          <Link href="/">dalta</Link>
+          <Link href="/">Eddie</Link>
         </Logo>
         <Nav />
       </div>

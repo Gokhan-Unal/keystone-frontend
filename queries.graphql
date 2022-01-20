@@ -62,6 +62,33 @@ query user {
   }
 }
 
+# Create User
+mutation SignUp {
+  createUser(
+    data: { name: "Berkin", email: "berkin@example.com", password: "berkin123" }
+  ) {
+    id
+    name
+    email
+  }
+}
+
+# Sign in
+mutation Signin {
+  authenticateUserWithPassword(email: "berkin@example.com", password: "berkin123") {
+    ... on UserAuthenticationWithPasswordSuccess {
+      sessionToken
+      item {
+        name
+        email
+      }
+    }
+    ... on UserAuthenticationWithPasswordFailure {
+      message
+    }
+  }
+}
+
 #--- single response
 # singleCourse:
 # description: "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"

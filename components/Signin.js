@@ -36,9 +36,14 @@ export default function Signin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signIn();
+    const res = await signIn();
     resetForm();
-    router.push('/');
+    if (
+      res.data.authenticateUserWithPassword.__typename ===
+      'UserAuthenticationWithPasswordSuccess'
+    ) {
+      router.push('/');
+    }
   };
 
   const error =
@@ -50,7 +55,7 @@ export default function Signin() {
   return (
     <FormStyles method="POST" onSubmit={handleSubmit}>
       <h2>Sign in to your account</h2>
-      {error ? error : undefined}
+      <p>{error ? error : undefined}</p>
       <label htmlFor="email">
         Email
         <input

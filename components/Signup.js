@@ -24,15 +24,16 @@ export default function SignUp() {
   const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
     variables: inputs,
   });
+
   async function handleSubmit(e) {
     e.preventDefault();
-    await signup().catch(console.error);
+    const res = await signup();
     resetForm();
-    router.push('/signin');
   }
   return (
     <FormStyles method="POST" onSubmit={handleSubmit}>
       <h2>Sign Up For an Account</h2>
+      <p>{error ? error.message : undefined}</p>
       {data?.createUser && (
         <p>Signed up with {data.createUser.email} - Please Go Head and Sign in!</p>
       )}
@@ -95,6 +96,10 @@ export const FormStyles = styled.form`
     border: 3px solid #ccc;
     border-radius: 3px;
     width: 100%;
+  }
+
+  p {
+    color: var(--blue);
   }
 
   button {

@@ -18,8 +18,6 @@ export default function Pagination({ page }) {
   const { coursesCount } = data;
   const pageCount = Math.ceil(coursesCount / perPage);
 
-  console.log(data);
-
   return (
     <PageStyles>
       <Link href={`/courses/${page - 1}`}>

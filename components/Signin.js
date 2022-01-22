@@ -3,7 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import useForm from '../hooks/useForm';
 import { CURRENT_USER_QUERY } from '../hooks/useUser';
-import { FormStyles } from './Signup';
+import { FormStyles } from './styles/FormStyles';
 
 const SIGNIN_MUTATION = gql`
   mutation Signin($email: String!, $password: String!) {

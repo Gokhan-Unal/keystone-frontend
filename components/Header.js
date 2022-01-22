@@ -11,11 +11,20 @@ const Logo = styled.div`
   background: var(--blue);
   transform: skew(-10deg);
   transition: filter 0.5s ease-in-out;
+  width: 210px;
+  min-width: 210px;
   a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     padding: 0.5rem 1rem;
+    position: relative;
+    span {
+      position: absolute;
+      transform: translate(-30%, -20%);
+      color: #df1717;
+      font-weight: bold;
+    }
   }
   &:hover {
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
@@ -23,6 +32,8 @@ const Logo = styled.div`
 
   @media (max-width: 700px) {
     font-size: 3rem;
+    width: 180px;
+    min-width: 180px;
   }
 `;
 
@@ -52,7 +63,11 @@ export default function Header() {
     <HeaderStyles>
       <div className="main">
         <Logo>
-          <Link href="/">Eddie</Link>
+          <Link href="/">
+            <a>
+              Level<span>+</span>
+            </a>
+          </Link>
         </Logo>
         <Nav />
       </div>

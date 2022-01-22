@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const FormStyles = styled.form`
   margin: 0 auto;
   padding: 2rem;
@@ -22,7 +24,7 @@ export const FormStyles = styled.form`
     background: var(--blue);
     color: var(--offWhite);
     border: none;
-    font-size: 2.5rem;
+    font-size: 1.2rem;
     padding: 1rem 1.5rem;
     cursor: pointer;
   }

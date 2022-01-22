@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Nav from './Nav';
 import styled from 'styled-components';
+import Search from './Search';
 
 const Logo = styled.div`
   font-size: 3.5rem;
@@ -72,7 +73,7 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-main">
-        <p>Search</p>
+        <Search />
       </div>
     </HeaderStyles>
   );

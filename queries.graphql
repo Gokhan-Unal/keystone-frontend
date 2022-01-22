@@ -111,6 +111,20 @@ mutation SignUp($email: String!, $name: String!, $password: String!) {
     email
   }
 }
+# Search
+query Search($searchTerm: String!) {
+  searchCourse: courses(
+    where: {
+      OR: [
+        { name: { contains: $searchTerm } }
+        { description: { contains: $searchTerm } }
+      ]
+    }
+  ) {
+    name
+    description
+  }
+}
 
 #--- single response
 # singleCourse:

@@ -4,7 +4,7 @@ import Nav from './Nav';
 import styled from 'styled-components';
 
 const Logo = styled.div`
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-left: 2rem;
   position: relative;
   z-index: 2;
@@ -33,7 +33,6 @@ const HeaderStyles = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-    border-bottom: 5px solid var(--black);
 
     @media (max-width: 1300px) {
       flex-direction: column;

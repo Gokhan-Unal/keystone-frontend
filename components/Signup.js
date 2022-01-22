@@ -27,9 +27,10 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await signup();
+    await signup().catch(error => console.log(error))
     resetForm();
   }
+
   return (
     <FormStyles method="POST" onSubmit={handleSubmit}>
       <h2>Sign Up For an Account</h2>

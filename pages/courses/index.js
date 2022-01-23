@@ -5,7 +5,7 @@ import Pagination from '../../components/Pagination';
 
 export default function CoursePage() {
   const { query } = useRouter();
-  console.log(query);
+  // console.log(query);
   const page = parseInt(query.page);
   return (
     <>

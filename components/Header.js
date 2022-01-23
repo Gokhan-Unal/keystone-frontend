@@ -72,9 +72,7 @@ export default function Header() {
         </Logo>
         <Nav />
       </div>
-      <div className="sub-main">
-        <Search />
-      </div>
+      <div className="sub-main">{/* <Search /> */}</div>
     </HeaderStyles>
   );
 }

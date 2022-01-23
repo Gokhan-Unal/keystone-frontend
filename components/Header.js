@@ -53,8 +53,7 @@ const HeaderStyles = styled.header`
     }
   }
   .sub-main {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    padding: 1rem;
   }
 `;
 
@@ -71,11 +70,7 @@ export default function Header() {
         </Logo>
         <Nav />
       </div>
-      <div className="sub-main">
-        <ClientOnly>
-          <Search />
-        </ClientOnly>
-      </div>
+      <div className="sub-main"></div>
     </HeaderStyles>
   );
 }

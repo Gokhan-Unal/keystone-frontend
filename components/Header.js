@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Nav from './Nav';
 import styled from 'styled-components';
-import Search from './Search';
+import Search, { ClientOnly } from './Search';
 
 const Logo = styled.div`
   font-size: 3.5rem;
@@ -55,7 +55,6 @@ const HeaderStyles = styled.header`
   .sub-main {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 1px solid black;
   }
 `;
 
@@ -73,7 +72,9 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-main">
-        <Search />
+        <ClientOnly>
+          <Search />
+        </ClientOnly>
       </div>
     </HeaderStyles>
   );

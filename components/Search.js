@@ -1,60 +1,80 @@
-import { gql, useLazyQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import { useLazyQuery, gql } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
-import { useRouter } from 'next/dist/client/router';
-import React from 'react';
 import debounce from 'lodash.debounce';
+
+import { useRouter } from 'next/dist/client/router';
+import { Dropdown, DropDownItem, SearchStyles } from './styles/SearchStyles';
 
 const SEARCH_QUERY = gql`
   query searchCourse($searchTerm: String!) {
     searchTerms: courses(
       where: {
         OR: [
-          { name: { contains: $searchTerm } }
-          { description: { contains: $searchTerm } }
+          { name: { contains: $searchTerm, mode: insensitive } }
+          { description: { contains: $searchTerm, mode: insensitive } }
         ]
       }
     ) {
       id
       name
       description
+      photo {
+        image {
+          publicUrlTransformed
+        }
+      }
     }
   }
 `;
 
+export function ClientOnly({ children, ...delegated }) {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
+  return <div {...delegated}>{children}</div>;
+}
+
 export default function Search() {
   const router = useRouter();
-  const [searchCourse, { data, loading, error }] = useLazyQuery(SEARCH_QUERY, {
-    fetchPolicy: 'no-cache', // don't cache the results of the query, always fetch fresh
+  const [searchCourse, { loading, data }] = useLazyQuery(SEARCH_QUERY, {
+    fetchPolicy: 'no-cache', // always go to the network
   });
 
-  const searchedItems = data?.searchTerms || [];
-  const findItemsDebounced = debounce(searchCourse, 500);
+  const items = data?.searchTerms || [];
+  const findItemsButChill = debounce(searchCourse, 350);
   resetIdCounter();
   const {
     isOpen,
     inputValue,
     getMenuProps,
-    getComboboxProps,
     getInputProps,
+    getComboboxProps,
     getItemProps,
     highlightedIndex,
   } = useCombobox({
-    items: searchedItems,
+    items: items,
     onInputValueChange() {
-      findItemsDebounced({
-        variables: { searchTerm: inputValue },
+      findItemsButChill({
+        variables: {
+          searchTerm: inputValue,
+        },
       });
     },
     onSelectedItemChange({ selectedItem }) {
-      console.log('selectedItem', selectedItem);
       router.push({
         pathname: `/course/${selectedItem.id}`,
       });
     },
     itemToString: (item) => item.name || '',
   });
+
   return (
-    <div>
+    <SearchStyles>
       <div {...getComboboxProps()}>
         <input
           {...getInputProps({
@@ -65,19 +85,21 @@ export default function Search() {
           })}
         />
       </div>
-      <div {...getMenuProps()}>
+      <Dropdown {...getMenuProps()}>
         {isOpen &&
-          searchedItems.map((item, index) => (
-            <div
+          items.map((item, index) => (
+            <DropDownItem
               key={item.id}
-              style={index === highlightedIndex ? 'backgroundColor: "blue"' : ''}
+              highlighted={index === highlightedIndex}
               {...getItemProps({ item, index })}
             >
               {item.name}
-            </div>
+            </DropDownItem>
           ))}
-        {isOpen && !searchedItems.length && !loading && <div>No results found</div>}
-      </div>
-    </div>
+        {isOpen && !items.length && !loading && (
+          <DropDownItem>Sorry, No Course found for {inputValue}</DropDownItem>
+        )}
+      </Dropdown>
+    </SearchStyles>
   );
 }

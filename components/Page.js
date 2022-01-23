@@ -6,7 +6,6 @@ const GlobalStyles = createGlobalStyle`
   html {
     --blue: #4241ad;
     --black: '#393939';
-    --gray: '#3A3A3A';
     --offWhite: #ededed;
     --max-width: 1450px;
     --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.09);

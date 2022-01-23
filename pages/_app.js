@@ -18,14 +18,14 @@ function MyApp({ Component, pageProps, apollo }) {
 // -for id's and etc.
 MyApp.getInitialProps = async function ({ Component, ctx }) {
   let pageProps = {};
-  console.log('pageProps1', pageProps);
+  // console.log('pageProps1', pageProps);
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
-    console.log('pageProps2', pageProps);
+    // console.log('pageProps2', pageProps);
   }
-  console.log('ctx is important <3', ctx);
+  // console.log('ctx is important <3', ctx);
   pageProps.query = ctx.query; // - get any query variables /products /to /id etc.
-  console.log('pageProps3', pageProps);
+  // console.log('pageProps3', pageProps);
   return { pageProps };
 };
 

@@ -6,7 +6,7 @@ import Signout from './Signout';
 
 export default function Nav() {
   const user = useUser();
-  console.log(user);
+  // console.log(user);
   return (
     <NavStyles>
       <li>

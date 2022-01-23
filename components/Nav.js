@@ -15,6 +15,9 @@ export default function Nav() {
       {user && (
         <>
           <li>
+            <Link href="/create">Create Course</Link>
+          </li>
+          <li>
             <Link href="/account">Account</Link>
           </li>
           <Signout />

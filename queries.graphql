@@ -112,17 +112,46 @@ mutation SignUp($email: String!, $name: String!, $password: String!) {
   }
 }
 # Search
-query Search($searchTerm: String!) {
-  searchCourse: courses(
+
+query searchCourse($searchTerm: String!) {
+  searchTerms: courses(
     where: {
       OR: [
-        { name: { contains: $searchTerm } }
-        { description: { contains: $searchTerm } }
+        { name: { contains: $searchTerm, mode: insensitive } }
+        { description: { contains: $searchTerm, mode: insensitive } }
       ]
     }
   ) {
+    id
     name
     description
+    photo {
+      image {
+        publicUrlTransformed
+      }
+    }
+  }
+}
+
+# Create Course
+mutation createCourse(
+  $name: String!
+  $description: String!
+  $status: String!
+  $image: Upload
+) {
+  createCourse(
+    data: {
+      name: $name
+      description: $description
+      status: $status
+      photo: { create: { image: $image, altText: $name } }
+    }
+  ) {
+    id
+    name
+    description
+    price
   }
 }
 

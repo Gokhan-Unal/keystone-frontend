@@ -1,6 +1,8 @@
 import { gql, useMutation } from '@apollo/client';
 import React from 'react';
 import useForm from '../hooks/useForm';
+import { useRouter } from 'next/router';
+import { ALL_COURSES_QUERY } from './Courses';
 
 const CREATE_COURSE_MUTATION = gql`
   mutation createCourse(
@@ -28,6 +30,7 @@ const CREATE_COURSE_MUTATION = gql`
 `;
 
 export default function CreateCourse() {
+  const router = useRouter();
   const { inputs, handleChange, resetForm } = useForm({
     name: 'Vue Course',
     description: 'This is a course about Vue',
@@ -38,12 +41,16 @@ export default function CreateCourse() {
 
   const [createCourse, { data, loading, error }] = useMutation(CREATE_COURSE_MUTATION, {
     variables: inputs,
+    refetchQueries: [{ query: ALL_COURSES_QUERY }],
   });
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const res = await createCourse();
     resetForm();
+    router.push({
+      pathname: `/course/${res.data.createCourse.id}`,
+    });
   };
   return (
     <form onSubmit={onSubmit}>

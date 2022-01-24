@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Course from './Course';
 import { perPage } from '../config';
 
-const ALL_COURSES_QUERY = gql`
+export const ALL_COURSES_QUERY = gql`
   query getAllCourses($skip: Int = 0, $take: Int) {
     allCourses: courses(take: $take, skip: $skip) {
       id

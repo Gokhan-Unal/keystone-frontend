@@ -3,6 +3,7 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 import { useRouter } from 'next/router';
 import { ALL_COURSES_QUERY } from './Courses';
+import { CreateCourseStyles } from './styles/CourseCreateStyles';
 
 const CREATE_COURSE_MUTATION = gql`
   mutation createCourse(
@@ -39,7 +40,7 @@ export default function CreateCourse() {
     image: '',
   });
 
-  const [createCourse, { data, loading, error }] = useMutation(CREATE_COURSE_MUTATION, {
+  const [createCourse, { error }] = useMutation(CREATE_COURSE_MUTATION, {
     variables: inputs,
     refetchQueries: [{ query: ALL_COURSES_QUERY }],
   });
@@ -53,7 +54,7 @@ export default function CreateCourse() {
     });
   };
   return (
-    <form onSubmit={onSubmit}>
+    <CreateCourseStyles onSubmit={onSubmit}>
       {error && <p>{error.message}</p>}
       <label htmlFor="name">
         Name
@@ -79,7 +80,7 @@ export default function CreateCourse() {
       </label>
       <label htmlFor="image">
         Image
-        <input type="file" name="image" id="image" onChange={handleChange} />
+        <input className='custom-file-input' type="file" name="image" id="image" onChange={handleChange} />
       </label>
 
       <label htmlFor="status">
@@ -102,12 +103,12 @@ export default function CreateCourse() {
         <textarea
           name="description"
           id="description"
-          placeholder="Name"
+          placeholder="Description"
           value={inputs.description}
           onChange={handleChange}
         />
       </label>
       <button type="submit">Create Course</button>
-    </form>
+    </CreateCourseStyles>
   );
 }

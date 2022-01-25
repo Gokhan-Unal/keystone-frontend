@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Title from './styles/Title';
-import ItemStyles from './styles/ItemStyles';
+import ItemStyles, { Edit } from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 
@@ -16,6 +16,9 @@ export default function Course({ course }) {
         src={course?.photo?.image?.publicUrlTransformed}
         alt={course.name}
       />
+      <Edit>
+        <Link href="/">🖋️ Edit</Link>
+      </Edit>
       <Title>
         <Link href={`/course/${course.id}`}>{course.name}</Link>
       </Title>

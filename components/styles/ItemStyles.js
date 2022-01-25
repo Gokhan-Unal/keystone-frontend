@@ -28,4 +28,17 @@ const ItemStyles = styled.div`
   }
 `;
 
+export const Edit = styled.div`
+  position: absolute;
+  transform: translateY(0);
+  padding: 0.5rem 1rem;
+  color: white;
+  z-index: 5;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: translateY(-100%);
+    background: var(--blue);
+  }
+`;
+
 export default ItemStyles;

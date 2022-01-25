@@ -8,7 +8,7 @@ const NavStyles = styled.ul`
   list-style-type: none;
   a,
   button {
-    padding: 1rem 3rem;
+    padding: 1rem 1.2rem;
     display: inline-block;
     align-items: center;
     position: relative;

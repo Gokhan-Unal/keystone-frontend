@@ -17,7 +17,14 @@ export default function Course({ course }) {
         alt={course.name}
       />
       <Edit>
-        <Link href="/">🖋️ Edit</Link>
+        <Link
+          href={{
+            pathname: '/update',
+            query: { id: course.id },
+          }}
+        >
+          Edit
+        </Link>
       </Edit>
       <Title>
         <Link href={`/course/${course.id}`}>{course.name}</Link>

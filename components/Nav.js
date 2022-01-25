@@ -22,7 +22,7 @@ export default function Nav() {
           </li>
           <Signout />
           <li>
-            <a>Welcome back {user.name}</a>
+            <a>Welcome {user.name}</a>
           </li>
         </>
       )}

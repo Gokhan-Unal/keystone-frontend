@@ -19,7 +19,8 @@ const ItemStyles = styled.div`
   p {
     line-height: 2;
     font-weight: 300;
-    padding: 0 3rem;
+    padding: 1rem 3rem;
+    padding-top: 0;
     font-size: 1.4rem;
   }
   &:hover {
@@ -30,14 +31,17 @@ const ItemStyles = styled.div`
 
 export const Edit = styled.div`
   position: absolute;
-  transform: translateY(0);
-  padding: 0.5rem 1rem;
-  color: white;
-  z-index: 5;
+  padding: 0rem 1rem;
+  color: ${(props) => (props.color ? props.color : 'var(--blue)')};
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : 'orange'};
+  left: 0;
+  top: 0;
+  z-index: 2;
+  vertical-align: middle;
   transition: all 0.5s ease-in-out;
   &:hover {
-    transform: translateY(-100%);
-    background: var(--blue);
+    background: red;
   }
 `;
 

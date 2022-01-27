@@ -155,6 +155,25 @@ mutation createCourse(
   }
 }
 
+mutation updateCourse(
+  $id: ID!
+  $name: String
+  $description: String
+  $status: String
+  $price: Int
+) {
+  updateCourse(
+    where: { id: $id }
+    data: { name: $name, description: $description, status: $status, price: $price }
+  ) {
+    id
+    name
+    description
+    status
+    price
+  }
+}
+
 #--- single response
 # singleCourse:
 # description: "Dive in and learn React.js from scratch! Learn Reactjs, Hooks, Redux, React Routing, Animations, Next.js and way more!"

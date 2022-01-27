@@ -32,9 +32,11 @@ const ItemStyles = styled.div`
 export const Edit = styled.div`
   position: absolute;
   padding: 0rem 1rem;
-  color: black;
+  color: ${(props) => (props.color ? props.color : 'var(--blue)')};
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : 'orange'};
   left: 0;
-  bottom: 0;
+  top: 0;
   z-index: 2;
   vertical-align: middle;
   transition: all 0.5s ease-in-out;

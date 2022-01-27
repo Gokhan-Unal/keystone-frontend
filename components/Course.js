@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Title from './styles/Title';
 import ItemStyles, { Edit } from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
+import setContrast from '../lib/randomColor';
 
 export default function Course({ course }) {
+  const { textColour, backgroundColour } = setContrast();
+  let color = textColour;
+  let backgroundColor = backgroundColour;
+
+  useEffect(() => {
+    const edit = document.getElementById(`edit`);
+    edit.style.color = color;
+    edit.style.backgroundColor = backgroundColor;
+    console.log(color);
+  });
   return (
     <ItemStyles>
       <Image
@@ -16,7 +27,7 @@ export default function Course({ course }) {
         src={course?.photo?.image?.publicUrlTransformed}
         alt={course.name}
       />
-      <Edit>
+      <Edit color={color} backgroundColor={backgroundColor} id="edit">
         <Link
           href={{
             pathname: '/update',
